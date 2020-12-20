@@ -25,12 +25,9 @@
 - (id)initWithRootItem:(NSString*)rootPath;
 
 #pragma mark - Public Methods
-+ (Node *)rootItem;
 - (NSString *)fullPath;
 - (NSString *)relativePath;
 - (Node *)childAtIndex:(NSInteger)index;
 - (NSInteger)numberOfChildren;
-- (enum NodeType)nodeType;
-- (bool)isLeaf;
 
 @end

@@ -21,7 +21,6 @@
 
 // Add a new entry to the tree
 - (id)initWithDirectory:(NSString*)rootPath;
-- (Node *)getNodeWithRelativePath:(NSString *)path;
 
 @end
 

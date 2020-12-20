@@ -26,7 +26,6 @@ static NSMutableArray *leafNode = nil;
 - (id)initWithPath:(NSString *)path parent:(Node *)parentItem {
     self = [super  init];
     if (self) {
-//        _relativePath = [[path lastPathComponent] copy];
         _relativePath = path;
         _parent = parentItem;
         _children = [self setupChildren];
@@ -62,25 +61,6 @@ static NSMutableArray *leafNode = nil;
                 Node *newChild = [[Node alloc] initWithPath:item parent:self];
                 [_children addObject:newChild];
             }
-            
-            
-            
-//            for (NSString *item in contents) {
-//                if (![item hasPrefix:@"."]) {
-//                    numChildren++;
-//                }
-//            }
-//
-////            numChildren = [contents count];
-//            _children = [[NSMutableArray alloc] initWithCapacity:numChildren];
-//
-//            for (NSUInteger i = 0; i < contents.count; i++) {
-//                if (![[contents objectAtIndex:i] hasPrefix:@"."]) {
-//                    Node *newChild = [[Node alloc] initWithPath:[contents objectAtIndex:i] parent:self];
-//                    [_children addObject:newChild];
-//                }
-//            }
-            
         } else {
             _children = leafNode;
         }
@@ -118,8 +98,6 @@ static NSMutableArray *leafNode = nil;
 }
 
 - (NSInteger)numberOfChildren {
-//    NSArray *tmp = [self children];
-//    return (tmp == leafNode) ? (0) : [tmp count];
     return (_children == nil) ? 0 : [[self children] count];
 }
 
