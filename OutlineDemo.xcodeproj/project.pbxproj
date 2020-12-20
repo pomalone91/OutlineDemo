@@ -13,6 +13,8 @@
 		25916EE0258E7E40005DFD84 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 25916EDE258E7E40005DFD84 /* Main.storyboard */; };
 		25916EE3258E7E40005DFD84 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 25916EE2258E7E40005DFD84 /* main.m */; };
 		25916EEC258E7ED2005DFD84 /* Node.m in Sources */ = {isa = PBXBuildFile; fileRef = 25916EEB258E7ED2005DFD84 /* Node.m */; };
+		25916EEF258E8021005DFD84 /* NSFileManager+AppSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = 25916EEE258E8021005DFD84 /* NSFileManager+AppSupport.m */; };
+		25916EF1258E8E61005DFD84 /* TreeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 25916EF0258E8E61005DFD84 /* TreeManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,10 @@
 		25916EE4258E7E40005DFD84 /* OutlineDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OutlineDemo.entitlements; sourceTree = "<group>"; };
 		25916EEA258E7EC2005DFD84 /* Node.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		25916EEB258E7ED2005DFD84 /* Node.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Node.m; sourceTree = "<group>"; };
+		25916EED258E8021005DFD84 /* NSFileManager+AppSupport.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSFileManager+AppSupport.h"; sourceTree = "<group>"; };
+		25916EEE258E8021005DFD84 /* NSFileManager+AppSupport.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSFileManager+AppSupport.m"; sourceTree = "<group>"; };
+		25916EF0258E8E61005DFD84 /* TreeManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TreeManager.m; sourceTree = "<group>"; };
+		25916EF2258E8E7F005DFD84 /* TreeManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TreeManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,10 @@
 				25916EDA258E7E3D005DFD84 /* ViewController.m */,
 				25916EEA258E7EC2005DFD84 /* Node.h */,
 				25916EEB258E7ED2005DFD84 /* Node.m */,
+				25916EED258E8021005DFD84 /* NSFileManager+AppSupport.h */,
+				25916EEE258E8021005DFD84 /* NSFileManager+AppSupport.m */,
+				25916EF2258E8E7F005DFD84 /* TreeManager.h */,
+				25916EF0258E8E61005DFD84 /* TreeManager.m */,
 				25916EDC258E7E40005DFD84 /* Assets.xcassets */,
 				25916EDE258E7E40005DFD84 /* Main.storyboard */,
 				25916EE1258E7E40005DFD84 /* Info.plist */,
@@ -147,6 +157,8 @@
 				25916EDB258E7E3D005DFD84 /* ViewController.m in Sources */,
 				25916EE3258E7E40005DFD84 /* main.m in Sources */,
 				25916ED8258E7E3D005DFD84 /* AppDelegate.m in Sources */,
+				25916EF1258E8E61005DFD84 /* TreeManager.m in Sources */,
+				25916EEF258E8021005DFD84 /* NSFileManager+AppSupport.m in Sources */,
 				25916EEC258E7ED2005DFD84 /* Node.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

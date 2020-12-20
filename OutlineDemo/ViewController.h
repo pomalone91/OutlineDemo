@@ -7,8 +7,11 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "TreeManager.h"
 
-@interface ViewController : NSViewController
+@interface ViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
+@property (strong) IBOutlet NSOutlineView *outlineVIew;
+@property TreeManager *treeManager;
 
 
 @end
