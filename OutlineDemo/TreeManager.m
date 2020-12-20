@@ -23,7 +23,8 @@
     
     for (NSString *item in contents) {
         NSString *fullDirPath = [appSup stringByAppendingPathComponent:item];
-        Node *node = [[Node alloc] initWithRootItem:fullDirPath];
+//        Node *node = [[Node alloc] initWithRootItem:fullDirPath];
+        Node *node = [[Node alloc] initWithPath:fullDirPath parent:nil];
         [_nodes addObject:node];
         
     }

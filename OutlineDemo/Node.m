@@ -13,32 +13,21 @@
 @implementation Node
 
 static Node *rootItem = nil;
-static NSMutableArray *leafNode = nil;
+static NSMutableArray *leafNodes = nil;
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        leafNode = [[NSMutableArray alloc] init];
+        leafNodes = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (id)initWithPath:(NSString *)path parent:(Node *)parentItem {
+- (id)initWithPath:(NSString *)path parent:(Node *)parent {
     self = [super  init];
     if (self) {
         _relativePath = path;
-        _parent = parentItem;
-        _children = [self setupChildren];
-    }
-    return self;
-}
-
-- (id)initWithRootItem:(NSString *)rootPath {
-    self = [super init];
-    if (self) {
-        rootItem = self;
-        _relativePath = rootPath;
-        _parent = nil;
+        _parent = parent;
         _children = [self setupChildren];
     }
     return self;
@@ -48,21 +37,18 @@ static NSMutableArray *leafNode = nil;
     if (_children == nil) {
         NSFileManager *fm = [NSFileManager defaultManager];
         NSString *fullPath = [self fullPath];
-        BOOL isDir, valid;
+        BOOL isDir, fileExists;
         
         // Check if the child is valid and if it is a directory
-        valid = [fm fileExistsAtPath:fullPath isDirectory:&isDir];
-        if (valid && isDir) {
+        fileExists = [fm fileExistsAtPath:fullPath isDirectory:&isDir];
+        if (fileExists && isDir) {
             NSArray *contents = [fm visibleContentsOfDirAtPath:fullPath error:nil];
-            NSUInteger numChildren = 0;
             _children = [[NSMutableArray alloc] initWithCapacity:contents.count];
+            
             for (NSString *item in contents) {
-                numChildren++;
                 Node *newChild = [[Node alloc] initWithPath:item parent:self];
                 [_children addObject:newChild];
             }
-        } else {
-            _children = leafNode;
         }
     }
     
@@ -73,14 +59,6 @@ static NSMutableArray *leafNode = nil;
     }
     
     return _children;
-}
-
-- (NSArray *)children {
-    return _children;
-}
-
-- (NSString *)relativePath {
-    return _relativePath;
 }
 
 - (NSString *)fullPath {

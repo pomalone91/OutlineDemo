@@ -21,12 +21,10 @@
 
 #pragma mark - Initializers
 - (id)init;
-- (id)initWithPath:(NSString*)value parent:(Node *) children;
-- (id)initWithRootItem:(NSString*)rootPath;
+- (id)initWithPath:(NSString*)value parent:(Node *) parent;
 
 #pragma mark - Public Methods
 - (NSString *)fullPath;
-- (NSString *)relativePath;
 - (Node *)childAtIndex:(NSInteger)index;
 - (NSInteger)numberOfChildren;
 
