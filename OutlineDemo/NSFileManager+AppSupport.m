@@ -57,12 +57,13 @@
     if (errorOut) {
         *errorOut = nil;
     }
+//    NSLog(@"%@", resolvedPath);
     return resolvedPath;
 }
 
 // Returns a mutable array of the visible contents (no .DS_Stores) of a directory
-- (NSMutableArray *)visibleContentsOfDirAtPath:(NSString *)path error:(NSError *)error {
-    NSArray *allContents = [self contentsOfDirectoryAtPath:path error:nil];
+- (NSMutableArray *)visibleContentsOfDirAtPath:(NSString *)path error:(NSError * _Nullable *)error {
+    NSArray *allContents = [self contentsOfDirectoryAtPath:path error:error];
     NSMutableArray *visibleContents = [NSMutableArray array];
     
     for (NSString *item in allContents) {

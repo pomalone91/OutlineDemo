@@ -63,33 +63,8 @@
     NSString *itemText = [[item relativePath] lastPathComponent];
     NSTableCellView *cell = [outlineView makeViewWithIdentifier:@"DataCell" owner:self];
     cell.textField.stringValue = itemText;
-//    NSLog(@"%@", [item fullPath]);
     NSImage *img = [[NSWorkspace sharedWorkspace] iconForFile:[item fullPath]]; // Get default icons for file type at path
-//    NSLog(@"%@", [img name]);
     cell.imageView.image = img;
-//    switch ([item nodeType]) {  // Switch node types to set outlineView icon
-//        case entry: {
-//            cell.textField.stringValue = [NSString stringWithFormat:@"%@", [self dateStringFromNode:item withFormat:@"M/d"]];
-//            break;
-//        }
-//        case monthDir: {
-////            cell.imageView.image = [NSImage imageNamed:@"NSFolder"];
-//            NSInteger monthNum = [[item relativePath] integerValue];
-//            NSDateFormatter *df = [[NSDateFormatter alloc] init];
-//            cell.textField.stringValue = [[df monthSymbols] objectAtIndex:monthNum - 1];
-//            break;
-//        }
-//        case yearDir: {
-////            cell.imageView.image = [NSImage imageNamed:@"NSFolder"];
-//            NSString *year = [[item relativePath] lastPathComponent];
-//            cell.textField.stringValue = year;
-//            break;
-//        }
-//        default: {
-//            NSLog(@"Unkown NodeType");
-//            break;
-//        }
-//    }
     
     return cell;
 }
@@ -123,12 +98,5 @@
     [fm createFileAtPath:file2 contents:nil attributes:nil];
     [fm createFileAtPath:file3 contents:nil attributes:nil];
 }
-
-//- (BOOL)willWriteFile:(NSString *)path asDirecotyr:(BOOL)isDir named:(NSString *)fileName {
-//    NSFileManager *fm = [NSFileManager defaultManager];
-//    NSArray *contents = [fm contentsOfDirectoryAtPath:path error:nil];
-//
-//    return ![contents containsObject:(isDir ? fileName : [fileName stringByAppendingString:@".md"])];
-//}
 
 @end
