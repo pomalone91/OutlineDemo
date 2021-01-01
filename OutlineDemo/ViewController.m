@@ -20,7 +20,7 @@
     
     [self writeFilesInAppSupport];
     
-    _treeManager = [[TreeManager alloc] initWithDirectory:nil];
+    _treeManager = [[TreeManager alloc] init];
 }
 
 
@@ -34,7 +34,7 @@
 - (NSInteger)outlineView:(NSOutlineView *)outlineView numberOfChildrenOfItem:(id)item {
     if (item == nil) {
         if (_treeManager == nil) {
-            _treeManager = [[TreeManager alloc] initWithDirectory:nil];
+            _treeManager = [[TreeManager alloc] init];
         }
         return _treeManager.nodes.count;
     }
@@ -52,10 +52,6 @@
 
 - (id)outlineView:(NSOutlineView *)outlineView child:(NSInteger)index ofItem:(id)item {
     return (item == nil) ? _treeManager.nodes[index] : [(Node *) item childAtIndex:index];
-}
-
-- (id)outlineView:(NSOutlineView *)outlineView objectValueForTableColumn:(NSTableColumn *)tableColumn byItem:(id)item {
-    return (item == nil) ? @"/" : [item relativePath];
 }
 
 #pragma mark - Delegate implementations

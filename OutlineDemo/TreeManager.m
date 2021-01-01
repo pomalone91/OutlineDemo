@@ -12,7 +12,7 @@
 
 @implementation TreeManager
 
-- (id)initWithDirectory:(NSString*)rootPath {
+- (id)init {
     self = [super init];
     // Loop through the contents of the directory and create a new root node for each dir in there
     NSFileManager *fm = [NSFileManager defaultManager];
@@ -23,7 +23,6 @@
     
     for (NSString *item in contents) {
         NSString *fullDirPath = [appSup stringByAppendingPathComponent:item];
-//        Node *node = [[Node alloc] initWithRootItem:fullDirPath];
         Node *node = [[Node alloc] initWithPath:fullDirPath parent:nil];
         [_nodes addObject:node];
         

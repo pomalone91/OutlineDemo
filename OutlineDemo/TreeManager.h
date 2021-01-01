@@ -17,10 +17,7 @@
 // Properties
 @property NSMutableArray *nodes;
 
-// Method API
-
-// Add a new entry to the tree
-- (id)initWithDirectory:(NSString*)rootPath;
+- (id)init;
 
 @end
 
