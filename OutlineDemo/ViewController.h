@@ -10,7 +10,7 @@
 #import "TreeManager.h"
 
 @interface ViewController : NSViewController <NSOutlineViewDataSource, NSOutlineViewDelegate>
-@property (strong) IBOutlet NSOutlineView *outlineVIew;
+@property (strong) IBOutlet NSOutlineView *outlineView;
 @property TreeManager *treeManager;
 
 

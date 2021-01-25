@@ -18,6 +18,7 @@
 @property NSMutableArray *nodes;
 
 - (id)init;
+- (Node *)getNodeWithPath:(NSString *)path;
 
 @end
 

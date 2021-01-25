@@ -15,12 +15,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_outlineVIew setDelegate:self];
-    [_outlineVIew setDataSource:self];
+    
+    [_outlineView setDelegate:self];
+    [_outlineView setDataSource:self];
+    
+    [_outlineView setAutosaveName:@"outlineDemo"];
+    [_outlineView setAutosaveExpandedItems:YES];
     
     [self writeFilesInAppSupport];
     
-    _treeManager = [[TreeManager alloc] init];
+    [self restoreSelectedNode];
 }
 
 
@@ -63,6 +67,61 @@
     cell.imageView.image = img;
     
     return cell;
+}
+
+- (void)outlineViewSelectionDidChange:(NSNotification *)notification {
+    Node *node = [_outlineView itemAtRow:_outlineView.selectedRow];
+    [self writeSelectedItem:node];
+}
+#pragma mark - Restoration
+/**
+ Called to save state
+ */
+- (id)outlineView:(NSOutlineView *)outlineView persistentObjectForItem:(id)item {
+    Node *node = (Node *)item;
+    return [node fullPath];
+}
+
+/**
+ Called to get items and restore state
+ */
+- (id)outlineView:(NSOutlineView *)outlineView itemForPersistentObject:(id)object {
+    NSString *nodePath = (NSString *)object;
+    Node *node = [_treeManager getNodeWithPath:nodePath];
+    if (node)
+        return node;
+    
+    return nil;
+}
+
+/**
+ Write selected item in the outlineView to NSUserDefault. Will be called whenever the selection changes.
+ */
+- (void)writeSelectedItem:(Node *)node {
+    NSLog(@"Writing state for node: %@", node.relativePath);
+    [[NSUserDefaults standardUserDefaults] setObject:[node fullPath] forKey:@"selectedNode"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+/**
+ Reads the last selected item from NSUserDefaults and selects it in outlineView. Will be called when view loads.
+ */
+- (void)restoreSelectedNode {
+    // Get selected node
+    NSString *fullPath = [[NSUserDefaults standardUserDefaults] objectForKey:@"selectedNode"];
+    Node *node = [_treeManager getNodeWithPath:fullPath];
+    
+    // Select the item
+    [self selectItem:node inOutlineView:_outlineView];
+}
+
+/**
+ https://stackoverflow.com/questions/1096768/how-to-select-items-in-nsoutlineview-without-nstreecontroller
+ */
+- (void)selectItem:(id)item inOutlineView:(NSOutlineView *)outline {
+    NSInteger itemIndex = [outline rowForItem:item];
+
+    [outline selectRowIndexes: [NSIndexSet indexSetWithIndex: itemIndex] byExtendingSelection: NO];
 }
 
 #pragma mark - Directory writer
