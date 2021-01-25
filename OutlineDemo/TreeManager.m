@@ -34,4 +34,28 @@
     return self;
 }
 
+- (Node *)getNodeWithPath:(NSString *)path {
+    Node *node;
+    for (Node *child in _nodes) {
+        node = [self checkNode:child ForPath:path];
+        if (node != nil)
+            break;
+    }
+    return node;
+}
+
+- (Node *)checkNode:(Node *)node ForPath:(NSString *)path {
+    if ([[node fullPath] isEqualToString:path]) {
+        return node;
+    } else if ([node numberOfChildren] > 0) {
+        for (Node *child in [node children]) {
+            node = [self checkNode:child ForPath:path];
+            if (node != nil) {
+                return node;
+            }
+        }
+    }
+    return nil;
+}
+
 @end
